@@ -1,24 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import IndexPage from "./pages/IndexPage";
+import CartPage from "./pages/CartPage";
+import OrderListPage from "./pages/OrderListPage";
+import UserPage from "./pages/UserPage";
+
+import BottomNav from "./components/BottomNav";
+import "./App.css";
 
 function App() {
+  const [activeNum, setActiveNum] = useState(0);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {activeNum === 0 && <IndexPage />}
+      {activeNum === 1 && <CartPage />}
+      {activeNum === 2 && <OrderListPage />}
+      {activeNum === 3 && <UserPage />}
+      <BottomNav activeNum={activeNum} setActiveNum={setActiveNum} />
     </div>
   );
 }
